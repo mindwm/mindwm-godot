@@ -91,6 +91,14 @@ var __data__was__set := false
 		dataUnderscorebase64 = value
 var __dataUnderscorebase64__was__set := false
 
+# Required: False
+# isArray: false
+@export var knativebrokerttl: String = "255":
+	set(value):
+		__knativebrokerttl__was__set = true
+		knativebrokerttl = value
+var __knativebrokerttl__was__set := false
+
 
 func bzz_collect_missing_properties() -> Array:
 	var bzz_missing_properties := Array()
@@ -127,6 +135,8 @@ func bzz_normalize() -> Dictionary:
 		bzz_dictionary["data"] = self.data
 	if self.__dataUnderscorebase64__was__set:
 		bzz_dictionary["dataUnderscorebase64"] = self.dataUnderscorebase64
+	if self.__knativebrokerttl__was__set:
+		bzz_dictionary["knativebrokerttl"] = self.knativebrokerttl
 	return bzz_dictionary
 
 
@@ -153,6 +163,8 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 		me.data = Touch.bzz_denormalize_single(from_dict["data"])
 	if from_dict.has("dataUnderscorebase64"):
 		me.dataUnderscorebase64 = from_dict["dataUnderscorebase64"]
+	if from_dict.has("knativebrokerttl"):
+		me.knativebrokerttl = from_dict["knativebrokerttl"]
 	return me
 
 
